@@ -37,7 +37,4 @@ class QuizBrain:
         print("You've completed the quiz")
         print(f"Your final score was: {self.question_score}/{self.question_number}.")
 
-    def test(self):
-        print("hallo")
-
 

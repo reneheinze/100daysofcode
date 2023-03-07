@@ -48,8 +48,6 @@ if (start.lower()== "no"):
         new_quiz.next_question()
     new_quiz.finish()
 
-new_quiz.test()
-
 
 
 
