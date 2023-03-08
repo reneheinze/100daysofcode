@@ -1,0 +1,17 @@
+import random
+
+data = [0,1,2]
+data_choice_high = 1
+
+def random_number(data,data_choice_high):
+    # Catch the inital data_choice_high creation
+    data_choice = random.randint(0, len(data)-1)
+    # Check for the same value of high and low
+    if data_choice_high == data_choice:
+        random_number(data,data_choice_high)
+        return data_choice
+    else:
+        return data_choice
+
+print(data_choice_high)
+print(random_number(data, data_choice_high))
