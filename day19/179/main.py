@@ -1,4 +1,5 @@
 from turtle import Turtle, Screen
+import random
 
 
 def create_turtle_objects(color_list):
@@ -29,21 +30,38 @@ def set_start_position(turtle_objects):
 screen = Screen()
 screen_width = 1000
 screen_height = 1000
+is_race_on: False
 
 # Screen setup with a windows of 1000x1000 Pixel
 # Using positional arguments to better understand whats going on later
 screen.setup(width=screen_width, height=screen_height)
 
 # Messagebox to ask for the winner
-# user_bet = screen.textinput(title="Make you bet", prompt="Which turtle will win the race? Enter a color: ")
+user_bet = screen.textinput(title="Make you bet", prompt="Which turtle will win the race? Enter a color: ")
 color_list = ["red", "orange", "yellow", "green", "blue", "purple"]
 
 # Create turtle objects
 turtle_object = create_turtle_objects(color_list)
-print(turtle_object[0].position())
+# Set turtles to starting position
 set_start_position(turtle_object)
 
-print(turtle_object[0].position())
+# Check if user_bet is set
+if user_bet:
+    is_race_on = True
+
+# Start the race
+while is_race_on:
+    for turtle in turtle_object:
+        turtle.forward(random.randint(1,10))
+
+        # Check if the goal line is reached
+        if turtle.xcor() > 500:
+            is_race_on = False
+            if turtle.fillcolor() == user_bet.lower():
+                print(f"You win. The {turtle.fillcolor()} Turtle is the winner.")
+            else:
+                print(f"You loose. The {turtle.fillcolor()} Turtle is the winner.")
+
 
 # Start Listening for Events
 screen.listen()
@@ -51,4 +69,3 @@ screen.listen()
 
 screen.exitonclick()
 
-# test
