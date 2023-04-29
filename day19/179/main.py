@@ -63,9 +63,5 @@ while is_race_on:
                 print(f"You loose. The {turtle.fillcolor()} Turtle is the winner.")
 
 
-# Start Listening for Events
-screen.listen()
-# screen.onkey(move_forwards,"w")
-
 screen.exitonclick()
 
