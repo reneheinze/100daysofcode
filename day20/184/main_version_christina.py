@@ -24,6 +24,9 @@ def move_right():
     """Turns the arrow 90 degrees to the right"""
     my_segments[0].right(90)
 
+def move_left():
+    """Turns the arrow 90 degrees to the left"""
+    my_segments[0].left(90)
 
 # segments list
 my_segments = []
@@ -44,28 +47,21 @@ my_segments = create_segments(3)
 # Set Turtles Start Position
 set_segment_start(my_segments)
 
-my_segments[0].color("white")
-my_segments[1].color("red")
-my_segments[2].color("blue")
-
 while game_is_on:
     # We only update the screen only when all pieces moved
     screen.update()
-    #time.sleep(0.1)
     time.sleep(0.1)
     screen.listen()
-#    for seg in my_segments:
-#        seg.forward(20)
-    position = [my_segments[0].position(),my_segments[0].position(),my_segments[1].position()]
+    for seg_num in range(len(my_segments)-1, 0, -1):
+        # get x and y of the connected segment
+        new_x = my_segments[seg_num - 1].xcor()
+        new_y = my_segments[seg_num - 1].ycor()
+        # set the new position of the current segment to where the connected segment was
+        my_segments[seg_num].goto(new_x,new_y)
+    # Move Head segment forward
     my_segments[0].forward(20)
-    # ! Only 2 and 1 will be used for iteration.
-    for items in range(2, 0, -1):
-        segment_position = position[items]
-        my_segments[items].goto(segment_position)
-      #  screen.update()
     screen.onkey(move_right, "d")
-
-
+    screen.onkey(move_left, "a")
 
 # The screen does not just disappear
 screen.exitonclick()
