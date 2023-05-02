@@ -17,15 +17,16 @@ snake = Snake()
 
 # Listen for the pressed keys
 screen.listen()
-screen.onkey(snake.move_right, "d")
-screen.onkey(snake.move_left, "a")
+screen.onkey(snake.move_right, "Right")
+screen.onkey(snake.move_left, "Left")
+screen.onkey(snake.move_up, "Up")
+screen.onkey(snake.move_down, "Down")
 
 while game_is_on:
     # We only update the screen only when all pieces moved
     screen.update()
     time.sleep(0.1)
     snake.move()
-
 
 
 # The screen does not just disappear

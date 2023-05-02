@@ -1,8 +1,11 @@
 from turtle import Screen, Turtle
 MOVE_DISTANCE = 20
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
 class Snake:
-    #my_segments = []
 
     def __init__(self):
         self.my_segments = []
@@ -25,15 +28,27 @@ class Snake:
             start_position -= 20
 
     def move_right(self):
-        """Turns the arrow 90 degrees to the right"""
-        self.my_segments[0].right(90)
+        """Turns the arrow to the right"""
+        if self.my_segments[0].heading() != LEFT:
+            self.my_segments[0].setheading(RIGHT)
 
     def move_left(self):
-        """Turns the arrow 90 degrees to the left"""
-        self.my_segments[0].left(90)
+        """Turns the arrow to the left"""
+        if self.my_segments[0].heading() != RIGHT:
+            self.my_segments[0].setheading(LEFT)
+
+    def move_up(self):
+        """Turns the arrow up"""
+        if self.my_segments[0].heading() != DOWN:
+            self.my_segments[0].setheading(UP)
+
+    def move_down(self):
+        """Turns the arrow down"""
+        if self.my_segments[0].heading() != UP:
+            self.my_segments[0].setheading(DOWN)
 
     def move(self):
-        """Starts moving the snake. Use d and a to navigate"""
+        """Starts moving the snake."""
         for seg_num in range(len(self.my_segments) - 1, 0, -1):
             # get x and y of the connected segment
             new_x = self.my_segments[seg_num - 1].xcor()
