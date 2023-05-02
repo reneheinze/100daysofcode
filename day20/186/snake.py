@@ -1,10 +1,11 @@
 from turtle import Screen, Turtle
-
+MOVE_DISTANCE = 20
 
 class Snake:
-    my_segments = []
+    #my_segments = []
 
     def __init__(self):
+        self.my_segments = []
         self.create_segments(3)
         self.set_segment_start()
 
@@ -33,8 +34,6 @@ class Snake:
 
     def move(self):
         """Starts moving the snake. Use d and a to navigate"""
-        screen = Screen()
-        screen.listen()
         for seg_num in range(len(self.my_segments) - 1, 0, -1):
             # get x and y of the connected segment
             new_x = self.my_segments[seg_num - 1].xcor()
@@ -42,6 +41,4 @@ class Snake:
             # set the new position of the current segment to where the connected segment was
             self.my_segments[seg_num].goto(new_x, new_y)
         # Move Head segment forward
-        self.my_segments[0].forward(20)
-        screen.onkey(self.move_right, "d")
-        screen.onkey(self.move_left, "a")
+        self.my_segments[0].forward(MOVE_DISTANCE)

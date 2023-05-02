@@ -15,6 +15,11 @@ screen.tracer(0)
 # Create Snake Object
 snake = Snake()
 
+# Listen for the pressed keys
+screen.listen()
+screen.onkey(snake.move_right, "d")
+screen.onkey(snake.move_left, "a")
+
 while game_is_on:
     # We only update the screen only when all pieces moved
     screen.update()
