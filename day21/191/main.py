@@ -1,5 +1,6 @@
-from turtle import Screen, Turtle
+from turtle import Screen
 from snake import Snake
+from food import Food
 import time
 
 game_is_on = True
@@ -12,8 +13,9 @@ screen.title("My Snake Game")
 # Stop Refreshing the Screen (force refresh with screen.update())
 screen.tracer(0)
 
-# Create Snake and FoodObject
+# Create Snake and Food Object
 snake = Snake()
+food = Food()
 
 # Listen for the pressed keys
 screen.listen()
@@ -27,6 +29,8 @@ while game_is_on:
     screen.update()
     time.sleep(0.1)
     snake.move()
+
+    #Detect collusion with food
 
 
 # The screen does not just disappear
