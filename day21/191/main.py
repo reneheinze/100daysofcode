@@ -14,7 +14,7 @@ screen.title("My Snake Game")
 # Stop Refreshing the Screen (force refresh with screen.update())
 screen.tracer(0)
 
-# Create Snake and Food Object
+# Create Snake and Food Object and Score Book
 snake = Snake()
 food = Food()
 scorebook = Scorebook()
