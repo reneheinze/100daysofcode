@@ -1,6 +1,7 @@
 from turtle import Screen
 from snake import Snake
 from food import Food
+from scorebook import Scorebook
 import time
 
 game_is_on = True
@@ -16,6 +17,7 @@ screen.tracer(0)
 # Create Snake and Food Object
 snake = Snake()
 food = Food()
+scorebook = Scorebook()
 
 # Listen for the pressed keys
 screen.listen()
@@ -31,6 +33,10 @@ while game_is_on:
     snake.move()
 
     #Detect collusion with food
+    if snake.my_segments[0].distance(food) < 15:
+        scorebook.score += 1
+        scorebook.displayscore()
+        food.refresh()
 
 
 # The screen does not just disappear

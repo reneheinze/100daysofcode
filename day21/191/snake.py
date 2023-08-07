@@ -13,6 +13,7 @@ class Snake:
         self.my_segments = []
         self.create_segments(3)
         self.set_segment_start()
+        self.head = self.my_segments[0]
 
     def create_segments(self, segment_number):
         """Get a integer number as input and create and return a segment object list"""
