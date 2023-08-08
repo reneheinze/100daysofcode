@@ -6,29 +6,40 @@ DOWN = 270
 LEFT = 180
 RIGHT = 0
 
+start_pos = []
 
 class Snake:
 
+
     def __init__(self):
         self.my_segments = []
-        self.create_segments(3)
-        self.set_segment_start()
-        self.head = self.my_segments[0]
+        self.create_start_position(3)
+        self.create_snake()
+#        self.head = self.my_segments[0]
 
-    def create_segments(self, segment_number):
+    def create_snake(self):
+        for position in start_pos:
+            self.add_segment(position)
+
+
+    def add_segment(self, position):
         """Get a integer number as input and create and return a segment object list"""
-        for _ in range(segment_number):
-            segment = Turtle(shape="square")
-            segment.color("white")
-            self.my_segments.append(segment)
+        segment = Turtle(shape="square")
+        segment.color("white")
+        segment.penup()
+        segment.goto(position)
+        self.my_segments.append(segment)
 
-    def set_segment_start(self):
+    def extend(self):
+        self.add_segment(self.my_segments[-1].position())
+
+    def create_start_position(self, start_range):
         """Gets the turtles list and puts them on the start position"""
-        start_position = 0
-        for segment in self.my_segments:
-            segment.penup()
-            segment.goto(x=start_position, y=0)
-            start_position -= 20
+        x = 0
+        for position in range(start_range):
+            start_pos.append((x, 0))
+            x -= 20
+        print(start_pos)
 
     def move_right(self):
         """Turns the arrow to the right"""

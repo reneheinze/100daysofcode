@@ -32,11 +32,17 @@ while game_is_on:
     time.sleep(0.1)
     snake.move()
 
-    #Detect collusion with food
+    #Detect collision with food
     if snake.my_segments[0].distance(food) < 15:
         scorebook.score += 1
         scorebook.displayscore()
+        snake.extend()
         food.refresh()
+
+    #Detect collision with wall
+    if snake.my_segments[0].xcor() > 280 or snake.my_segments[0].xcor() < -280 or snake.my_segments[0].ycor() < -280 or snake.my_segments[0].ycor() > 280:
+        scorebook.game_over()
+        game_is_on = False
 
 
 # The screen does not just disappear
