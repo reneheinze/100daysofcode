@@ -40,19 +40,16 @@ while game_is_on:
         food.refresh()
 
     #Detect collision with head
-    for segment in snake.my_segments:
-        if segment == snake.my_segments[0]:
-            pass
-        else:
-            if snake.my_segments[0].distance(segment) < 10:
-                scorebook.game_over()
-                game_is_on = False
+    # Slice the list of segments from my snake. Get everything inside the list other than the first item.
+    for segment in snake.my_segments[1:]:
+        if snake.my_segments[0].distance(segment) < 10:
+            scorebook.game_over()
+            game_is_on = False
 
     #Detect collision with wall
     if snake.my_segments[0].xcor() > 280 or snake.my_segments[0].xcor() < -280 or snake.my_segments[0].ycor() < -280 or snake.my_segments[0].ycor() > 280:
         scorebook.game_over()
         game_is_on = False
-
 
 # The screen does not just disappear
 screen.exitonclick()
